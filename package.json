@@ -1,0 +1,29 @@
+{
+  "name": "person",
+  "version": "1.0.0",
+  "description": "Original Blog move to subpath of `/blog`, you can access to <http://www.azzfun.net/blog>",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/azzgo/azzgo.github.io.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/azzgo/azzgo.github.io/issues"
+  },
+  "homepage": "https://github.com/azzgo/azzgo.github.io#readme",
+  "dependencies": {
+    "gulp-pug": "^3.0.3",
+    "install": "^0.8.1",
+    "npm": "^3.10.2",
+    "pug": "^2.0.0-beta3"
+  },
+  "devDependencies": {
+    "gh-pages": "^0.11.0",
+    "gulp-util": "^3.0.7"
+  }
+}
