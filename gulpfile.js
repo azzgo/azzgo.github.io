@@ -3,6 +3,7 @@ var gutil = require('gulp-util')
 var runSequence = require('run-sequence')
 var data = require('gulp-data')
 var path = require('path')
+var fs = require('fs')
 
 var pug = require('gulp-pug')
 
@@ -23,26 +24,29 @@ gulp.task('build', function(){
 gulp.task('pug', function(){
   return gulp.src('src/*.pug')
     .pipe(data(function(file) {
-      console.log()
       return {
-        common: require('./src/styles/common.css.json'),
-        css: require('./src/styles/' + path.basename(file.path.slice(0, -4)) + '.css.json')
+        common: JSON.parse(fs.readFileSync('./src/styles/common.css.json', 'utf-8')),
+        css: JSON.parse(fs.readFileSync('./src/styles/' + path.basename(file.path.slice(0, -4)) + '.css.json', 'utf-8'))
       }
     }))
     .pipe(pug({pretty: true}))
     .pipe(gulp.dest('./public'))
+    .pipe(connect.reload())
 })
 
 gulp.task('styles', function(){
   var processors = [autoprefixer(), module()]
   return gulp.src('src/styles/*.styl')
-    .pipe(stylus())
+    .pipe(stylus({
+      'include css': true
+    }))
     .pipe(postcss(processors))
     .pipe(gulp.dest('./public/styles'))
+    .pipe(connect.reload())
 })
 
 gulp.task('assets', function(){
-  return gulp.src('assets/*')
+  return gulp.src('assets/**')
     .pipe(gulp.dest('./public'))
 })
 
@@ -63,7 +67,8 @@ gulp.task('deploy', function(cb) {
 gulp.task('server', ['build'], function(){
   connect.server({
     root: 'public/',
-    port: 8080
+    port: 8080,
+    livereload: true
   })
 
   gulp.watch('./src/styles/**.styl', function() {
