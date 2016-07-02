@@ -3,8 +3,9 @@ html
   meta(charset="utf-8")
   meta(description="Welcome to Yishan's personal Website")
   title Azzfun
-  link(href="/styles/common.css", rel='stylesheet')
-  link(href="/styles/index.css", rel='stylesheet')
+  link(href='/font-awesome/css/font-awesome.min.css' rel='stylesheet')
+  link(href='/styles/common.css', rel='stylesheet')
+  link(href='/styles/index.css', rel='stylesheet')
 body
   div(class=css.gravatarWarper)
     img(
@@ -13,8 +14,12 @@ body
     )
   h1(class=css.title) Azzfun
   h2(class=css.subtitle) お主はお主の地平線を目指して
-  div
-    span blog
-    span linkin
-    span github
-    span rss
+  ul(class=css.menu)
+    li
+
+      a(href="http://www.azzfun.net/blog") 
+        i.fa.fa-book
+        | blog
+    li linkin
+    li github
+    li rss
