@@ -423,14 +423,15 @@ body {
   height: 100%;
   width: 100%;
 }
-body {
-  background-image: url("/images/book.jpg");
-  background-size: cover;
+a,
+a:link,
+a:visited {
+  text-decoration: none;
 }
-._title_1h8pp_430 {
+._title_hfsri_431 {
   color: #00f;
 }
-._gravatar_1h8pp_433 {
+._gravatar_hfsri_434 {
   border-radius: 50%;
   cursor: pointer;
   width: 150px;

@@ -1,18 +1,40 @@
-._title_gim18_1 {
+body {
+  background-image: url("/images/book.jpg");
+  background-size: cover;
+  background-position: center center;
+}
+._title_14rg2_6 {
   margin: 16px 0 0;
-  color: #f00;
+  color: #0288d1;
   text-align: center;
   font-size: 113px;
   font-family: Times-Roman;
 }
-._subtitle_gim18_8 {
+._subtitle_14rg2_13 {
   margin: 0;
   color: #fff;
   font-size: 25px;
   text-align: center;
+  font-family: Times-Roman;
 }
-._gravatarWarper_gim18_14 {
+._gravatarWarper_14rg2_20 {
   width: 100%;
   text-align: center;
   padding-top: 130px;
+}
+._menu_14rg2_25 {
+  text-align: center;
+  margin: 0;
+  padding: 30px 0;
+}
+._menu_14rg2_25 li {
+  display: inline-block;
+  list-style-type: none;
+  padding: 0 20px;
+}
+._menu_14rg2_25 li a {
+  color: #e0cbb8;
+}
+._menu_14rg2_25 li a i {
+  text-shadow: 1px 1px #000;
 }
