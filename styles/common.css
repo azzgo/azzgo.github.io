@@ -428,12 +428,19 @@ a:link,
 a:visited {
   text-decoration: none;
 }
-._title_hfsri_431 {
+._title_1mewp_431 {
   color: #00f;
 }
-._gravatar_hfsri_434 {
-  border-radius: 50%;
+._gravatar_1mewp_434 {
+  border-radius: 150px;
   cursor: pointer;
   width: 150px;
   height: 150px;
+  border: 2px solid #fff;
+  -webkit-transition: all 500ms ease;
+  transition: all 500ms ease;
+}
+._gravatar_1mewp_434:hover {
+  -webkit-transform: rotate(-360deg);
+          transform: rotate(-360deg);
 }
