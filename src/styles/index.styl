@@ -5,22 +5,32 @@ body
 
 .title
   margin 16px 0 0
-  color #0288D1
+  color #FFD61B
   text-align center
-  font-size 113px
-  font-family Times-Roman
+  font-size 100px
+  font-family Times-Roman, sans-serif
 
 .subtitle
   margin 0
-  color white
-  font-size 25px
-  text-align center
-  font-family Times-Roman
+  display flex
+  flex-direction row
+  i
+    flex 1
+    border 1px solid #fff
+    height 0
+    align-self center
+  h2
+    flex 1
+    color white
+    font-size 25px
+    text-align center
+    font-family Times-Roman
   
 .gravatarWarper
   width 100%
   text-align center
   padding-top 130px
+    
   
 .menu
   text-align center
@@ -29,8 +39,19 @@ body
   li
     display inline-block
     list-style-type none
-    padding 0 20px
+    padding 0 56px
     a
-      color: #e0cbb8
+      color: #1BB0FF
+      display: flex
+      flex-direction column
       i
-        text-shadow 1px 1px #000
+        margin-bottom 24px
+      span
+        font-size 24px
+        color #fff
+      
+      &:active, &:hover
+        i
+          text-shadow 1px 1px 2px #fff
+        span
+          color #EFEEEE
