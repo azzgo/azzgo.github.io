@@ -73,7 +73,7 @@ gulp.task('deploy', function(cb) {
   }, cb)
 })
 
-gulp.task('server', ['build'], function(){
+gulp.task('serve', ['build'], function(){
   connect.server({
     root: 'public/',
     port: 8080,
