@@ -12,13 +12,22 @@ var postcss = require('gulp-postcss')
 var stylus = require('gulp-stylus')
 var module = require('postcss-modules')
 var autoprefixer = require('autoprefixer')
+var swPrecache = require('sw-precache');
+
 
 var ghpages = require('gh-pages')
 var path = require('path')
 var del = require('del')
 
 gulp.task('build', function(){
-  return runSequence('clean', 'styles', 'pug', 'assets')
+  return runSequence('clean', 'styles', 'pug', 'assets', 'pwa')
+})
+
+gulp.task('pwa', function(cb) {
+  swPrecache.write(`public/service-worker.js`, {
+    staticFileGlobs: ['public/**/*.{js,html,css,png,jpg,gif,svg,eot,ttf,woff}'],
+    stripPrefix: 'public'
+  }, cb);
 })
 
 gulp.task('pug', function(){
