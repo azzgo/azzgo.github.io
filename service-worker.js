@@ -37,7 +37,7 @@
 /* eslint-disable indent, no-unused-vars, no-multiple-empty-lines, max-nested-callbacks, space-before-function-paren, quotes, comma-spacing */
 'use strict';
 
-var precacheConfig = [["/404.html","c5ac6eaf6b2741a147a1a9a459bbc6ae"],["/font-awesome/css/font-awesome.css","b652e3b759188ceaf79182f2fe72ea64"],["/font-awesome/css/font-awesome.min.css","4083f5d376eb849a458cc790b53ba080"],["/font-awesome/fonts/fontawesome-webfont.eot","25a32416abee198dd821b0b17a198a8f"],["/font-awesome/fonts/fontawesome-webfont.svg","d7c639084f684d66a1bc66855d193ed8"],["/font-awesome/fonts/fontawesome-webfont.ttf","1dc35d25e61d819a9c357074014867ab"],["/font-awesome/fonts/fontawesome-webfont.woff?v=4.6.3","c8ddf1e5e5bf3682bc7bebf30f394148"],["/images/book.jpg","ba6fe28a28d701bb4ca6cae32f512d9e"],["/index.html","c346cd9a299e8128b546b771c2129636"],["/styles/common.css","40f09ba1abef9907c951b4fe77dee2ea"],["/styles/index.css","47292456de72a698e715ef1cfcfa4a36"]];
+var precacheConfig = [["/404.html","c5ac6eaf6b2741a147a1a9a459bbc6ae"],["/font-awesome/css/font-awesome.css","b652e3b759188ceaf79182f2fe72ea64"],["/font-awesome/css/font-awesome.min.css","4083f5d376eb849a458cc790b53ba080"],["/font-awesome/fonts/fontawesome-webfont.eot","25a32416abee198dd821b0b17a198a8f"],["/font-awesome/fonts/fontawesome-webfont.svg","d7c639084f684d66a1bc66855d193ed8"],["/font-awesome/fonts/fontawesome-webfont.ttf","1dc35d25e61d819a9c357074014867ab"],["/font-awesome/fonts/fontawesome-webfont.woff","c8ddf1e5e5bf3682bc7bebf30f394148"],["/images/book.jpg","ba6fe28a28d701bb4ca6cae32f512d9e"],["/index.html","e85aae1ee3a1717fcdebd6ea05d231c0"],["/styles/common.css","40f09ba1abef9907c951b4fe77dee2ea"],["/styles/index.css","47292456de72a698e715ef1cfcfa4a36"]];
 var cacheName = 'sw-precache-v3--' + (self.registration ? self.registration.scope : '');
 
 
@@ -107,6 +107,8 @@ var isPathWhitelisted = function (whitelist, absoluteUrlString) {
 var stripIgnoredUrlParameters = function (originalUrl,
     ignoreUrlParametersMatching) {
     var url = new URL(originalUrl);
+    // Remove the hash; see https://github.com/GoogleChrome/sw-precache/issues/290
+    url.hash = '';
 
     url.search = url.search.slice(1) // Exclude initial '?'
       .split('&') // Split into an array of 'key=value' strings
@@ -212,8 +214,8 @@ self.addEventListener('fetch', function(event) {
     // handlers a chance to handle the request if need be.
     var shouldRespond;
 
-    // First, remove all the ignored parameter and see if we have that URL
-    // in our cache. If so, great! shouldRespond will be true.
+    // First, remove all the ignored parameters and hash fragment, and see if we
+    // have that URL in our cache. If so, great! shouldRespond will be true.
     var url = stripIgnoredUrlParameters(event.request.url, ignoreUrlParametersMatching);
     shouldRespond = urlsToCacheKeys.has(url);
 
